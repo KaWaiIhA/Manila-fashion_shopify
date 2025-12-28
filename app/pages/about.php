@@ -14,13 +14,13 @@
             <nav>
                 <ul>
                     <li><a href="../index.html">Home</a></li>
-                    <li><a href="store.php">Store</a></li>
-                    <li><a href="about.php" class="active">About</a></li>
+                    <li><a href="store.html">Store</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
                 </ul>
             </nav>
             <div class="header-actions">
                
-                <a href="help.php" class="header-link">Help</a>
+                <a href="help.html" class="header-link">Help</a>
                 <a href="#" class="header-link">Sign in</a>
                 <button class="cart-btn">
                     Cart <span class="cart-count">0</span>
@@ -145,15 +145,15 @@
     <section class="cta-section">
         <h2>Join the FPASSION Family</h2>
         <p>Experience the beauty of Filipino fashion firsthand</p>
-        <a href="store.php" class="btn btn-white">Shop Our Collection</a>
+        <a href="store.html" class="btn btn-white">Shop Our Collection</a>
     </section>
 
     <footer>
         <div class="footer-content">
             <div class="footer-links">
                 <a href="../index.html">Home</a>
-                <a href="store.php">Store</a>
-                <a href="about.php">About</a>
+                <a href="store.html">Store</a>
+                <a href="about.html">About</a>
                 <a href="#">Contact</a>
                 <a href="#">Privacy Policy</a>
                 <a href="#">Terms of Service</a>
@@ -164,3 +164,4 @@
 </body>
 
 </html>
+
