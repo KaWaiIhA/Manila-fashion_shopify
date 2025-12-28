@@ -13,7 +13,7 @@
             <a href="#" class="logo">FPASSION MANILA</a>
             <nav>
                 <ul>
-                    <li><a href="../index.php">Home</a></li>
+                    <li><a href="../index.html">Home</a></li>
                     <li><a href="./store.php">Store</a></li>
                     <li><a href="./about.php">About</a></li>
                 </ul>
@@ -251,4 +251,5 @@
         renderFAQs();
     </script>
 </body>
+
 </html>
