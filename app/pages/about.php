@@ -13,7 +13,7 @@
             <a href="#" class="logo">FPASSION MANILA</a>
             <nav>
                 <ul>
-                    <li><a href="../index.php">Home</a></li>
+                    <li><a href="../index.html">Home</a></li>
                     <li><a href="store.php">Store</a></li>
                     <li><a href="about.php" class="active">About</a></li>
                 </ul>
@@ -151,7 +151,7 @@
     <footer>
         <div class="footer-content">
             <div class="footer-links">
-                <a href="../index.php">Home</a>
+                <a href="../index.html">Home</a>
                 <a href="store.php">Store</a>
                 <a href="about.php">About</a>
                 <a href="#">Contact</a>
@@ -162,4 +162,5 @@
         </div>
     </footer>
 </body>
+
 </html>
