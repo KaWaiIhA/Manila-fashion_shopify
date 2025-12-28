@@ -17,12 +17,12 @@
             <a href="#" class="logo">FPASSION MANILA</a>
             <nav>
                     <ul><li><a href="../index.html">Home</a></li>
-                    <li><a href="store.php" class="active">Store</a></li>
-                    <li><a href="about.php">About</a></li></ul>
+                    <li><a href="store.html" class="active">Store</a></li>
+                    <li><a href="about.html">About</a></li></ul>
         </nav>
             <div class="header-actions">
                 
-                <a href="help.php" class="header-link">Help</a>
+                <a href="help.html" class="header-link">Help</a>
                 <a href="#" class="header-link">Sign in</a>
                 <button class="cart-btn cart-toggle">Cart <span class="cart-count">0</span></button>
             </div>
@@ -260,3 +260,4 @@
 </body>
 
 </html>
+
