@@ -16,7 +16,7 @@
         <div class="header-container">
             <a href="#" class="logo">FPASSION MANILA</a>
             <nav>
-                    <ul><li><a href="../index.php">Home</a></li>
+                    <ul><li><a href="../index.html">Home</a></li>
                     <li><a href="store.php" class="active">Store</a></li>
                     <li><a href="about.php">About</a></li></ul>
         </nav>
@@ -258,4 +258,5 @@
         render();
     </script>
 </body>
+
 </html>
