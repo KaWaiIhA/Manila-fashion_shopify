@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MANILA FASHION - Premium Filipino Fashion Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="index.php" class="logo">FPASSION MANILA</a>
+            <nav>
+                <ul>
+                    <li><a href="pages/store.php">Store</a></li>
+                    <li><a href="pages/about.php">About</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+              
+                <a href="pages/help.php" class="header-link">Help</a>
+                <a href="#" class="header-link">Sign in</a>
+                <button class="cart-btn cart-toggle">
+                    Cart <span class="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Better oral health, made simple</h1>
+                <p>Guide a lifetime of good habits with Electric Brushes, Refillable Floss, Gum, and more for the whole family.</p>
+                <button class="btn btn-primary" onclick="document.getElementById('shop').scrollIntoView({behavior: 'smooth'})">Learn more</button>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=600" alt="Fashion Model">
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stat-item stagger-1">
+                <div class="stat-title">25 best inventions</div>
+                <div class="stat-value">
+                    <span class="stat-icon">⭐</span>
+                    <span>TIME</span>
+                </div>
+            </div>
+            <div class="stat-item stagger-2">
+                <div class="stat-title">Over 24,439 five-star reviews</div>
+                <div class="stat-value">
+                    <span>⭐⭐⭐⭐⭐</span>
+                </div>
+            </div>
+            <div class="stat-item stagger-3">
+                <div class="stat-title">Best electric toothbrush</div>
+                <div class="stat-value">
+                    <span class="stat-icon">🏆</span>
+                    <span>GQ</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <div class="container" id="shop">
+        <h2 class="section-title">Featured Products</h2>
+        <div class="product-grid" id="product-grid">
+            <!-- Products will be dynamically loaded -->
+        </div>
+    </div>
+
+    <!-- Cart Drawer -->
+    <div class="cart-overlay"></div>
+    <div class="cart-drawer">
+        <div class="cart-header">
+            <h2>Your Cart (<span class="cart-count">0</span>)</h2>
+            <button class="close-cart">×</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <p class="cart-empty">Your cart is empty</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-subtotal">
+                <span>Subtotal:</span>
+                <span class="cart-total">₱0.00</span>
+            </div>
+            <button class="btn btn-primary" style="width: 100%;">
+                Proceed to Checkout
+            </button>
+            <p class="shipping-notice">
+                Free shipping on orders over ₱1,500
+            </p>
+        </div>
+    </div>
+
+    <!-- Product Modal -->
+    <div class="product-modal" id="product-modal">
+        <button class="close-modal">×</button>
+        <div class="modal-content">
+            <div class="modal-gallery">
+                <img src="" alt="" class="modal-main-image" id="modal-main-image">
+                <div class="modal-thumbnails" id="modal-thumbnails"></div>
+            </div>
+            <div class="modal-info">
+                <h2 class="modal-title" id="modal-title"></h2>
+                <div class="product-price" id="modal-price"></div>
+                <p class="modal-description" id="modal-description"></p>
+                
+                <div class="size-selector">
+                    <label>Select Size</label>
+                    <div class="size-buttons" id="size-buttons">
+                        <button class="size-btn active">S</button>
+                        <button class="size-btn">M</button>
+                        <button class="size-btn">L</button>
+                        <button class="size-btn">XL</button>
+                    </div>
+                </div>
+
+                <div class="quantity-selector">
+                    <label>Quantity</label>
+                    <div class="qty-input">
+                        <button class="qty-btn" onclick="decreaseQty()">−</button>
+                        <input type="number" class="qty-number" value="1" min="1" id="modal-qty">
+                        <button class="qty-btn" onclick="increaseQty()">+</button>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary add-to-cart-modal" onclick="addToCartFromModal()">
+                    <span class="btn-text">Add to Cart</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <span class="toast-icon">✓</span>
+        <span id="toast-message">Added to cart!</span>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>MANILA FASHION</h3>
+                <p>Premium Filipino fashion for the modern Filipino lifestyle.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Shipping Info</a></li>
+                    <li><a href="#">Returns</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Customer Service</h3>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                    <li><a href="#">Track Order</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <p>📧 capiongdahnreymart@gmail.com</p>
+                <p>📱 +63 9657748046</p>
+                <p>📍 Makati City, Metro Manila</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sample Products
+        const products = [
+            {
+                id: 1,
+                title: "Classic White Shirt",
+                price: 1250,
+                comparePrice: 1500,
+                image: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=400",
+                images: [
+                    "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=800",
+                    "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=800",
+                    "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=800"
+                ],
+                badge: "sale",
+                description: "Premium cotton shirt with modern fit. Perfect for any occasion."
+            },
+            {
+                id: 2,
+                title: "Denim Jacket",
+                price: 2850,
+                image: "https://images.unsplash.com/photo-1601333144130-8cbb312386b6?w=400",
+                images: [
+                    "https://images.unsplash.com/photo-1601333144130-8cbb312386b6?w=800",
+                    "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=800"
+                ],
+                badge: "new",
+                description: "Timeless denim jacket with premium finish. A wardrobe essential."
+            },
+            {
+                id: 3,
+                title: "Summer Dress",
+                price: 1890,
+                image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400",
+                images: [
+                    "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800",
+                    "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=800"
+                ],
+                description: "Lightweight and breezy dress perfect for tropical weather."
+            },
+            {
+                id: 4,
+                title: "Casual Sneakers",
+                price: 3200,
+                comparePrice: 3800,
+                image: "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400",
+                images: [
+                    "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=800",
+                    "https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=800"
+                ],
+                badge: "sale",
+                description: "Comfortable all-day sneakers with premium materials."
+            },
+            {
+                id: 5,
+                title: "Leather Bag",
+                price: 4500,
+                image: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400",
+                images: [
+                    "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=800"
+                ],
+                description: "Handcrafted leather bag with spacious compartments."
+            },
+            {
+                id: 6,
+                title: "Polo Shirt",
+                price: 980,
+                image: "https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99?w=400",
+                images: [
+                    "https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99?w=800"
+                ],
+                badge: "new",
+                description: "Classic polo shirt in premium pique cotton."
+            },
+            {
+                id: 7,
+                title: "Floral Blouse",
+                price: 1350,
+                image: "https://images.unsplash.com/photo-1564859228273-274232fdb516?w=400",
+                images: [
+                    "https://images.unsplash.com/photo-1564859228273-274232fdb516?w=800"
+                ],
+                description: "Elegant floral blouse perfect for any occasion."
+            },
+            {
+                id: 8,
+                title: "Chino Pants",
+                price: 1680,
+                comparePrice: 2100,
+                image: "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=400",
+                images: [
+                    "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=800"
+                ],
+                badge: "sale",
+                description: "Versatile chino pants with perfect fit and comfort."
+            }
+        ];
+
+        let cart = [];
+        let currentProduct = null;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+            initializeEventListeners();
+            animateOnScroll();
+        });
+
+        function renderProducts() {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = products.map((product, index) => `
+                <div class="product-card" data-product-id="${product.id}">
+                    <div class="product-image-container">
+                        ${product.badge ? `<span class="badge badge-${product.badge}">${product.badge.toUpperCase()}</span>` : ''}
+                        <img src="${product.image}" alt="${product.title}" class="product-image">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">${product.title}</h3>
+                        <div class="product-price">
+                            ${product.comparePrice ? 
+                                `<span class="price-compare">₱${product.comparePrice.toLocaleString()}</span>
+                                 <span class="price-sale">₱${product.price.toLocaleString()}</span>` :
+                                `<span class="price">₱${product.price.toLocaleString()}</span>`
+                            }
+                        </div>
+                        <button class="quick-add-btn" onclick="openProductModal(${product.id})">
+                            Quick View
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+
+            setTimeout(() => {
+                document.querySelectorAll('.product-card').forEach((card, i) => {
+                    setTimeout(() => {
+                        card.classList.add('visible');
+                    }, i * 100);
+                });
+            }, 100);
+        }
+
+        function openProductModal(productId) {
+            currentProduct = products.find(p => p.id === productId);
+            if (!currentProduct) return;
+
+            const modal = document.getElementById('product-modal');
+            const overlay = document.querySelector('.cart-overlay');
+            
+            document.getElementById('modal-title').textContent = currentProduct.title;
+            document.getElementById('modal-description').textContent = currentProduct.description;
+            document.getElementById('modal-main-image').src = currentProduct.images[0];
+            
+            const priceHtml = currentProduct.comparePrice ?
+                `<span class="price-compare">₱${currentProduct.comparePrice.toLocaleString()}</span>
+                 <span class="price-sale">₱${currentProduct.price.toLocaleString()}</span>` :
+                `<span class="price">₱${currentProduct.price.toLocaleString()}</span>`;
+            
+            document.getElementById('modal-price').innerHTML = priceHtml;
+
+            const thumbnails = document.getElementById('modal-thumbnails');
+            thumbnails.innerHTML = currentProduct.images.map((img, i) => `
+                <img src="${img}" class="thumbnail ${i === 0 ? 'active' : ''}" onclick="switchModalImage(${i}, this)">
+            `).join('');
+
+            modal.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('product-modal');
+            const overlay = document.querySelector('.cart-overlay');
+            modal.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function switchModalImage(index, thumbnail) {
+            document.getElementById('modal-main-image').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('modal-main-image').src = currentProduct.images[index];
+                document.getElementById('modal-main-image').style.opacity = '1';
+            }, 200);
+
+            document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+            thumbnail.classList.add('active');
+        }
+
+        function increaseQty() {
+            const input = document.getElementById('modal-qty');
+            input.value = parseInt(input.value) + 1;
+        }
+
+        function decreaseQty() {
+            const input = document.getElementById('modal-qty');
+            if (parseInt(input.value) > 1) {
+                input.value = parseInt(input.value) - 1;
+            }
+        }
+
+        function addToCartFromModal() {
+            const qty = parseInt(document.getElementById('modal-qty').value);
+            const selectedSize = document.querySelector('.size-btn.active').textContent;
+            
+            const cartItem = {
+                id: currentProduct.id,
+                title: currentProduct.title,
+                price: currentProduct.price,
+                image: currentProduct.image,
+                quantity: qty,
+                size: selectedSize
+            };
+
+            const existingItem = cart.find(item => item.id === cartItem.id && item.size === cartItem.size);
+            
+            if (existingItem) {
+                existingItem.quantity += qty;
+            } else {
+                cart.push(cartItem);
+            }
+
+            updateCart();
+            showToast(`${currentProduct.title} added to cart!`);
+            closeModal();
+            
+            setTimeout(() => {
+                openCart();
+            }, 500);
+        }
+
+        function updateCart() {
+            const cartCount = document.querySelectorAll('.cart-count');
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.forEach(el => {
+                el.textContent = totalItems;
+                el.classList.add('bump');
+                setTimeout(() => el.classList.remove('bump'), 300);
+            });
+
+            const cartItems = document.getElementById('cart-items');
+            const cartTotal = document.querySelector('.cart-total');
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p class="cart-empty">Your cart is empty</p>';
+                cartTotal.textContent = '₱0.00';
+                return;
+            }
+
+            cartItems.innerHTML = cart.map((item, index) => `
+                <div class="cart-item">
+                    <img src="${item.image}" alt="${item.title}" class="cart-item-image">
+                    <div class="cart-item-info">
+                        <div class="cart-item-title">${item.title}</div>
+                        <div class="cart-item-variant">Size: ${item.size}</div>
+                        <div class="cart-item-price">₱${item.price.toLocaleString()}</div>
+                    </div>
+                    <div class="cart-item-qty">
+                        <button class="qty-btn" onclick="updateCartQty(${index}, -1)">−</button>
+                        <span>${item.quantity}</span>
+                        <button class="qty-btn" onclick="updateCartQty(${index}, 1)">+</button>
+                    </div>
+                    <button class="remove-item" onclick="removeFromCart(${index})">×</button>
+                </div>
+            `).join('');
+
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            cartTotal.textContent = `₱${total.toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+        }
+
+        function updateCartQty(index, change) {
+            cart[index].quantity += change;
+            if (cart[index].quantity <= 0) {
+                cart.splice(index, 1);
+            }
+            updateCart();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+            showToast('Item removed from cart');
+        }
+
+        function openCart() {
+            document.querySelector('.cart-drawer').classList.add('active');
+            document.querySelector('.cart-overlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCart() {
+            document.querySelector('.cart-drawer').classList.remove('active');
+            document.querySelector('.cart-overlay').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        function initializeEventListeners() {
+            document.querySelectorAll('.cart-toggle').forEach(btn => {
+                btn.addEventListener('click', openCart);
+            });
+
+            document.querySelector('.close-cart').addEventListener('click', closeCart);
+            document.querySelector('.close-modal').addEventListener('click', closeModal);
+
+            document.querySelector('.cart-overlay').addEventListener('click', (e) => {
+                if (e.target === e.currentTarget) {
+                    closeCart();
+                    closeModal();
+                }
+            });
+
+            document.querySelectorAll('.size-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    if (!this.disabled) {
+                        document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+                        this.classList.add('active');
+                    }
+                });
+            });
+        }
+
+        function animateOnScroll() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.animate-section').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

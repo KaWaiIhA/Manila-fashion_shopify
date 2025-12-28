@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center - FPASSION MANILA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/help.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">FPASSION MANILA</a>
+            <nav>
+                <ul>
+                    <li><a href="../index.php">Home</a></li>
+                    <li><a href="./store.php">Store</a></li>
+                    <li><a href="./about.php">About</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                
+                <a href="./help.php" class="header-link active">Help</a>
+                <a href="#" class="header-link">Sign in</a>
+                <button class="cart-btn">
+                    Cart <span class="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>How Can We Help?</h1>
+        <p>Find answers to your questions or get in touch with our support team</p>
+        <div class="search-box">
+            <input type="text" class="search-input" placeholder="Search for help..." id="search-input">
+            <span class="search-icon">🔍</span>
+        </div>
+    </section>
+
+    <section class="quick-links">
+        <div class="quick-grid">
+            <div class="quick-card" style="animation-delay: 0.1s" onclick="scrollToSection('faq')">
+                <div class="quick-icon">📦</div>
+                <h3>Order & Shipping</h3>
+            </div>
+            <div class="quick-card" style="animation-delay: 0.2s" onclick="scrollToSection('faq')">
+                <div class="quick-icon">↩️</div>
+                <h3>Returns & Refunds</h3>
+            </div>
+            <div class="quick-card" style="animation-delay: 0.3s" onclick="scrollToSection('faq')">
+                <div class="quick-icon">👕</div>
+                <h3>Product Info</h3>
+            </div>
+            <div class="quick-card" style="animation-delay: 0.4s" onclick="scrollToSection('contact-form')">
+                <div class="quick-icon">💬</div>
+                <h3>Contact Us</h3>
+            </div>
+        </div>
+    </section>
+
+    <main class="main-content">
+        <section class="faq-section" id="faq">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-categories">
+                <button class="category-btn active" data-category="all">All</button>
+                <button class="category-btn" data-category="shipping">Shipping</button>
+                <button class="category-btn" data-category="returns">Returns</button>
+                <button class="category-btn" data-category="products">Products</button>
+                <button class="category-btn" data-category="account">Account</button>
+            </div>
+
+            <div class="faq-list" id="faq-list"></div>
+        </section>
+
+        <section class="contact-section">
+            <h2 class="section-title">Still Need Help?</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">📧</div>
+                    <h3>Email Us</h3>
+                    <p>Get help from our support team</p>
+                    <a href="mailto:support@fpassionmanila.com" class="contact-link">support@fpassionmanila.com</a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📱</div>
+                    <h3>Call Us</h3>
+                    <p>Mon-Fri, 9AM-6PM PHT</p>
+                    <a href="tel:+639123456789" class="contact-link">+63 912 345 6789</a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">💬</div>
+                    <h3>Live Chat</h3>
+                    <p>Chat with us in real-time</p>
+                    <a href="#" class="contact-link" onclick="showToast('Chat feature coming soon!')">Start Chat</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="form-section" id="contact-form">
+            <h2>Send Us a Message</h2>
+            <form onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject *</label>
+                    <select id="subject" class="form-select" required>
+                        <option value="">Select a topic</option>
+                        <option value="order">Order Issue</option>
+                        <option value="shipping">Shipping Question</option>
+                        <option value="return">Return/Refund</option>
+                        <option value="product">Product Question</option>
+                        <option value="account">Account Help</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" class="form-textarea" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#">Home</a>
+                <a href="#">Store</a>
+                <a href="#">About</a>
+                <a href="#">Help</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+            <p>&copy; 2024 FPASSION MANILA. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="toast" id="toast"></div>
+
+    <script>
+        const faqs = [
+            {category: 'shipping', q: 'How long does shipping take?', a: 'Standard shipping within Metro Manila takes 2-3 business days. Provincial deliveries take 5-7 business days. Express shipping is available for next-day delivery in select areas.'},
+            {category: 'shipping', q: 'Do you ship internationally?', a: 'Yes, we ship to most countries worldwide. International shipping takes 10-21 business days depending on the destination. Customs fees may apply.'},
+            {category: 'shipping', q: 'How can I track my order?', a: 'Once your order ships, you\'ll receive a tracking number via email. You can track your package on our website or the courier\'s tracking page.'},
+            {category: 'shipping', q: 'What is the shipping cost?', a: 'Shipping is FREE for orders over ₱1,500 within the Philippines. For orders below ₱1,500, shipping costs ₱150 for Metro Manila and ₱250 for provincial areas.'},
+            {category: 'returns', q: 'What is your return policy?', a: 'We accept returns within 30 days of delivery. Items must be unworn, unwashed, and in original condition with tags attached. Sale items are final sale.'},
+            {category: 'returns', q: 'How do I initiate a return?', a: 'Log into your account, go to Order History, select the item you want to return, and follow the return instructions. You\'ll receive a return shipping label via email.'},
+            {category: 'returns', q: 'When will I receive my refund?', a: 'Refunds are processed within 5-7 business days after we receive your returned item. The refund will be credited to your original payment method.'},
+            {category: 'returns', q: 'Can I exchange an item?', a: 'Yes! We offer free exchanges for different sizes or colors. Simply indicate your preference when initiating a return, and we\'ll ship the replacement immediately.'},
+            {category: 'products', q: 'How do I find my size?', a: 'Check our detailed size guide available on each product page. We provide measurements in inches and centimeters. If you\'re between sizes, we recommend sizing up.'},
+            {category: 'products', q: 'Are your products authentic?', a: '100% authentic and made with premium materials. We work directly with Filipino artisans and designers to ensure quality and authenticity.'},
+            {category: 'products', q: 'How do I care for my items?', a: 'Care instructions are included on the product label. Generally, we recommend hand washing or gentle machine wash in cold water. Hang dry to maintain quality.'},
+            {category: 'products', q: 'Do you restock sold-out items?', a: 'Popular items are typically restocked within 2-4 weeks. Sign up for restock notifications on the product page to get notified when it\'s back in stock.'},
+            {category: 'account', q: 'How do I create an account?', a: 'Click "Sign in" at the top of the page, then select "Create Account". Fill in your details and you\'re ready to shop with faster checkout and order tracking.'},
+            {category: 'account', q: 'I forgot my password. What should I do?', a: 'Click "Sign in" and then "Forgot Password". Enter your email address and we\'ll send you instructions to reset your password.'},
+            {category: 'account', q: 'How do I update my account information?', a: 'Log into your account and go to "Account Settings". You can update your email, password, shipping address, and payment methods.'},
+            {category: 'account', q: 'Can I cancel my order?', a: 'Orders can be cancelled within 2 hours of placement. After that, they enter processing and cannot be cancelled. Contact us immediately if you need to cancel.'}
+        ];
+
+        let currentCategory = 'all';
+
+        function renderFAQs() {
+            const list = document.getElementById('faq-list');
+            const filtered = currentCategory === 'all' ? faqs : faqs.filter(f => f.category === currentCategory);
+            
+            list.innerHTML = filtered.map((faq, i) => `
+                <div class="faq-item" style="animation-delay: ${i * 0.05}s">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>${faq.q}</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>${faq.a}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function toggleFAQ(el) {
+            const item = el.parentElement;
+            const wasActive = item.classList.contains('active');
+            
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+            
+            if (!wasActive) {
+                item.classList.add('active');
+            }
+        }
+
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentCategory = btn.dataset.category;
+                renderFAQs();
+            });
+        });
+
+        document.getElementById('search-input').addEventListener('input', (e) => {
+            const search = e.target.value.toLowerCase();
+            if (search.length < 2) {
+                renderFAQs();
+                return;
+            }
+            
+            const filtered = faqs.filter(f => 
+                f.q.toLowerCase().includes(search) || 
+                f.a.toLowerCase().includes(search)
+            );
+            
+            const list = document.getElementById('faq-list');
+            list.innerHTML = filtered.length ? filtered.map((faq, i) => `
+                <div class="faq-item" style="animation-delay: ${i * 0.05}s">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>${faq.q}</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>${faq.a}</p>
+                    </div>
+                </div>
+            `).join('') : '<p style="text-align: center; color: #666; padding: 2rem;">No results found. Try different keywords or contact our support team.</p>';
+        });
+
+        function handleSubmit(e) {
+            e.preventDefault();
+            showToast('Message sent successfully! We\'ll respond within 24 hours.');
+            e.target.reset();
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        renderFAQs();
+    </script>
+</body>
+</html>
