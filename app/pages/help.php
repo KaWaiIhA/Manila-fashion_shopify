@@ -14,13 +14,13 @@
             <nav>
                 <ul>
                     <li><a href="../index.html">Home</a></li>
-                    <li><a href="./store.php">Store</a></li>
-                    <li><a href="./about.php">About</a></li>
+                    <li><a href="./store.html">Store</a></li>
+                    <li><a href="./about.html">About</a></li>
                 </ul>
             </nav>
             <div class="header-actions">
                 
-                <a href="./help.php" class="header-link active">Help</a>
+                <a href="./help.html" class="header-link active">Help</a>
                 <a href="#" class="header-link">Sign in</a>
                 <button class="cart-btn">
                     Cart <span class="cart-count">0</span>
@@ -253,3 +253,4 @@
 </body>
 
 </html>
+
